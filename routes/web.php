@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('index');
 });
+//crud Buku
+Route::resource("/buku", 'bukuController');
