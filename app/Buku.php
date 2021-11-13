@@ -11,7 +11,20 @@ class Buku extends Model
     protected $fillable = [
         'judul',
         'kategori_id',
+        'user_id',
         'tahun',
         'penulis'
     ];
+
+    public function detailBuku(){
+        return $this->hasMany('App\DetailBuku');
+    }
+
+    public function kategori(){
+        return $this->belongsToMany('App\Kategori');
+    }
+
+    public function user(){
+        return $this->belongsToMany('App\User');
+    }
 }

@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Route::resource('kategori', 'KategoriController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

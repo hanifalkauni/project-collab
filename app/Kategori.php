@@ -11,4 +11,8 @@ class Kategori extends Model
     protected $fillable = [
         'nama'
     ];
+
+    public function kategori(){
+        return $this->hasMany('App\Buku');
+    }
 }
