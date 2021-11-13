@@ -17,9 +17,11 @@ class CreateBukuTable extends Migration
             $table->bigIncrements('id');
             $table->string('judul');
             $table->unsignedBigInteger('kategori_id');
+            $table->unsignedBigInteger('user_id')
             $table->integer('tahun');
             $table->string('penulis');
             $table->foreign('kategori_id')->references('id')->on('kategori');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
