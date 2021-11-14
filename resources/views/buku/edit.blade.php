@@ -4,7 +4,8 @@
 
 @section('konten')
 <form action="/buku/{{$buku->id}}" method="POST">
-        @csrf
+    @method('put')
+    @csrf
     <div class="form-group">
         <label>judul</label>
         <input type="text" class="form-control" name="judul" value="{{$buku->judul}}">

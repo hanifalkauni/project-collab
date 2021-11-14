@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('Judul', 'tambah buku')
+@section('Judul')
 Halaman Form Buku    
 @endsection
 

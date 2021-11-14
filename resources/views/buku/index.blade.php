@@ -31,6 +31,9 @@
                         </form>
                     </div>
                 </td>
+                <td>{{$item->tahun}}</td>
+                <td>{{$item->penulis}}</td>
+
             </tr>
             @empty
 

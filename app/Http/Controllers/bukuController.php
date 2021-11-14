@@ -97,7 +97,7 @@ class bukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $buku = Buku::find($id);
+        
         $request -> validate([
         'judul' => 'required',
         'kategori_id' => 'required',
@@ -105,8 +105,7 @@ class bukuController extends Controller
         'penulis' => 'required'
         ]);
 
-
-        $buku = new Buku;
+        $buku = Buku::find($id);
         $buku -> judul = $request->judul;
         $buku -> kategori_id = $request->kategori_id;
         $buku -> tahun = $request->tahun;
@@ -114,8 +113,8 @@ class bukuController extends Controller
         $buku->user_id = Auth::id();
         Alert::success('Berhasil', 'Buku berhasil diupdate');
 
-        $buku -> save();
-        return ("buku");
+        $buku -> update();
+        return redirect("/buku");
     }
 
     /**
