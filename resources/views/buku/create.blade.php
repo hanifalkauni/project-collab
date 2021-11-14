@@ -1,7 +1,5 @@
 @extends('layout.master')
-@section('Judul', 'tambah buku')
-Halaman Form Buku    
-@endsection
+@section('judul', 'Tambah buku')
 
 @section('konten')
 <form action="/buku" method="POST">
