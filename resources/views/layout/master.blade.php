@@ -33,15 +33,14 @@
         Preloader end
     ********************-->
 
-@include('parsial.nav')
+
     <!--**********************************
         Main wrapper start
     ***********************************-->
     <div id="main-wrapper">
-
-
-
-@include('parsial.sidebar')
+        @include('sweetalert::alert')
+        @include('parsial.nav')
+        @include('parsial.sidebar')
 
         <!--**********************************
             Content body start
@@ -64,7 +63,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">@yield('Judul')</h4>
+                                <h4 class="card-title">@yield('judul')</h4>
                             </div>
                             <div class="card-body">
                                 @yield('konten')

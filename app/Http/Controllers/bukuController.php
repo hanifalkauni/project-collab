@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Buku;
-use Kategori;
+use App\Buku;
+use App\Kategori;
 use DB;
 
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class bukuController extends Controller
     public function index()
     {
         $buku = Buku::all();
-        return view('buku.index', compact('Buku'));
+        return view('buku.index', compact('buku'));
     }
 
     /**
@@ -54,6 +54,7 @@ class bukuController extends Controller
         $buku -> penulis = $request->penulis;
 
         $buku -> save();
+        Alert::success('Berhasil', 'Buku berhasil ditambahkan');
         return ("buku");
     }
 
