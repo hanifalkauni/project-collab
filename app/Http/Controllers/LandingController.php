@@ -10,6 +10,12 @@ use Alert;
 
 class LandingController extends Controller
 {
+
+    public function __construct()
+{
+    $this->middleware('auth')->except('index','detail');
+}
+
     public function index(){
        $data=DB::table('buku')
             ->join('kategori','buku.kategori_id','kategori.id')

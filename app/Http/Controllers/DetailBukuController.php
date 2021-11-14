@@ -7,6 +7,12 @@ use App\DetailBuku;
 
 class DetailBukuController extends Controller
 {
+
+        public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index($id){
         $detail = DetailBuku::where('buku_id',$id)->first();
         $buku_id = $id;

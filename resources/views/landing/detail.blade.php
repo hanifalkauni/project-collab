@@ -89,63 +89,66 @@
                             @endforelse
                             
                         </div>
+                        @auth
                         <div class="anime__details__form">
-                        @if($showKomentar !=null)
-                            <div class="section-title">
-                                <h5>Edit Your Rating and Comentar</h5>
-                            </div class="rate">
-                            <form action="/detail/{{$buku->id}}/addkomentar/{{Auth::id()}}" method="post">
-                                @csrf
-                                <h6 style="color:white;  text-align:center;">Your Rating: </h6>
-                                
-                                <div class="rating"> 
-                                    @php
-                                    for($i=5; $i>0; $i--){
-                                        if($i == ($showKomentar->rating)){
-                                           echo '
-                                           <input type="radio" name="rating" value="'.$showKomentar->rating.'" id="'.$showKomentar->rating.'" checked>
-                                           <label for="'.$showKomentar->rating.'">☆</label> 
-                                           ';
-                                        }else{
-                                            echo '
-                                            <input type="radio" name="rating" value="'.$i.'" id="'.$i.'">
-                                            <label for="'.$i.'">☆</label>
-                                            '; 
+                            @if($showKomentar !=null)
+                                <div class="section-title">
+                                    <h5>Edit Your Rating and Comentar</h5>
+                                </div class="rate">
+                                <form action="/detail/{{$buku->id}}/addkomentar/{{Auth::id()}}" method="post">
+                                    @csrf
+                                    <h6 style="color:white;  text-align:center;">Your Rating: </h6>
+                                    
+                                    <div class="rating"> 
+                                        @php
+                                        for($i=5; $i>0; $i--){
+                                            if($i == ($showKomentar->rating)){
+                                               echo '
+                                               <input type="radio" name="rating" value="'.$showKomentar->rating.'" id="'.$showKomentar->rating.'" checked>
+                                               <label for="'.$showKomentar->rating.'">☆</label> 
+                                               ';
+                                            }else{
+                                                echo '
+                                                <input type="radio" name="rating" value="'.$i.'" id="'.$i.'">
+                                                <label for="'.$i.'">☆</label>
+                                                '; 
+                                            }
                                         }
-                                    }
-                                    @endphp
-                                </div>
-                                <h6 style="color:white;">Your Comentar:</h6><br>
-                                <textarea name="komentar" style="font-weight:bold; color:black !important">{{$showKomentar->komentar}}</textarea>
-                                <button type="submit"><i class="fa fa-location-arrow"></i> Edit Your Review</button>
-                               
-                            </form>
-                            <a href="/detail/{{$buku->id}}/deletekomentar/{{Auth::id()}}"><button><i class="fa fa-trash"></i> Delete Your Review</button></a>
-                        @else
-                            <div class="section-title">
-                                <h5>Your Comentar</h5>
-                            </div class="rate">
-                            <form action="/detail/{{$buku->id}}/addkomentar/{{Auth::id()}}" method="POST">
-                                @csrf
-                                <h6 style="color:white;  text-align:center;">Rate This Book:</h6>
-                                <div class="rating"> 
-                                    <input type="radio" name="rating" value="5" id="5">
-                                    <label for="5">☆</label> 
-                                    <input type="radio" name="rating" value="4" id="4">
-                                    <label for="4">☆</label> 
-                                    <input type="radio" name="rating" value="3" id="3">
-                                    <label for="3">☆</label> 
-                                    <input type="radio" name="rating" value="2" id="2">
-                                    <label for="2">☆</label> 
-                                    <input type="radio" name="rating" value="1" id="1">
-                                    <label for="1">☆</label> 
-                                </div>
-
-                                <textarea name="komentar" placeholder="Input Your Commentar here"></textarea>
-                                <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
-                            </form>
-                            @endif
-                        </div>
+                                        @endphp
+                                    </div>
+                                    <h6 style="color:white;">Your Comentar:</h6><br>
+                                    <textarea name="komentar" style="font-weight:bold; color:black !important">{{$showKomentar->komentar}}</textarea>
+                                    <button type="submit"><i class="fa fa-location-arrow"></i> Edit Your Review</button>
+                                   
+                                </form>
+                                <a href="/detail/{{$buku->id}}/deletekomentar/{{Auth::id()}}"><button><i class="fa fa-trash"></i> Delete Your Review</button></a>
+                            @else
+                                <div class="section-title">
+                                    <h5>Your Comentar</h5>
+                                </div class="rate">
+                                <form action="/detail/{{$buku->id}}/addkomentar/{{Auth::id()}}" method="POST">
+                                    @csrf
+                                    <h6 style="color:white;  text-align:center;">Rate This Book:</h6>
+                                    <div class="rating"> 
+                                        <input type="radio" name="rating" value="5" id="5">
+                                        <label for="5">☆</label> 
+                                        <input type="radio" name="rating" value="4" id="4">
+                                        <label for="4">☆</label> 
+                                        <input type="radio" name="rating" value="3" id="3">
+                                        <label for="3">☆</label> 
+                                        <input type="radio" name="rating" value="2" id="2">
+                                        <label for="2">☆</label> 
+                                        <input type="radio" name="rating" value="1" id="1">
+                                        <label for="1">☆</label> 
+                                    </div>
+    
+                                    <textarea name="komentar" placeholder="Input Your Commentar here"></textarea>
+                                    <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                                </form>
+                                @endif
+                            </div>
+                        @endauth
+                        
                     </div>
                     <div class="col-lg-4 col-md-4">
 
