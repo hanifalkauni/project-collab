@@ -13,4 +13,8 @@ class DetailBuku extends Model
         'bio_penulis',
         'sinopsis'
     ];
+
+    public function buku(){
+        return $this->belongsTo('App\Buku');
+    }
 }

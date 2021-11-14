@@ -13,4 +13,13 @@ class RatingKomentar extends Model
         'rating',
         'komentar'
     ];
+
+    public function buku(){
+        return $this->belongsToMany('App\Buku');
+    }
+
+    public function user(){
+        return $this->belongsToMany('App\User');
+    }
+
 }

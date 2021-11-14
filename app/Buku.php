@@ -15,4 +15,16 @@ class Buku extends Model
         'tahun',
         'penulis'
     ];
+
+    public function detailBuku(){
+        return $this->hasMany('App\DetailBuku');
+    }
+
+    public function kategori(){
+        return $this->belongsToMany('App\Kategori');
+    }
+
+    public function user(){
+        return $this->belongsToMany('App\User');
+    }
 }

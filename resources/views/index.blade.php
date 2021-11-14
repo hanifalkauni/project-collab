@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('judul','Index')
+@section('judul','Dashboard')
 @section('konten')
-    <h4>Index Page</h4>
+    <h1>welcome {{Auth::user()->name}}!</h1>
 @endsection

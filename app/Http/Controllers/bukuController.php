@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 use App\Buku;
 use App\Kategori;
 use DB;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Alert;
 class bukuController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,14 +52,15 @@ class bukuController extends Controller
 
 
         $buku = new Buku;
-        $buku -> judul = $request->judul;
-        $buku -> kategori_id = $request->kategori_id;
-        $buku -> tahun = $request->tahun;
-        $buku -> penulis = $request->penulis;
+        $buku->judul = $request->judul;
+        $buku ->kategori_id = $request->kategori_id;
+        $buku->tahun = $request->tahun;
+        $buku->penulis = $request->penulis;
+        $buku->user_id = Auth::id();
 
         $buku -> save();
         Alert::success('Berhasil', 'Buku berhasil ditambahkan');
-        return ("buku");
+        return redirect("buku");
     }
 
     /**
@@ -119,7 +124,7 @@ class bukuController extends Controller
     public function destroy($id)
     {
         $buku = Buku::find($id);
-        $buku = delete();
-        return redirect('buku');
+        $buku -> delete();
+        return redirect('/buku');
     }
 }

@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 //crud Buku
 Route::resource("buku", 'bukuController');
 
 Route::resource('kategori', 'KategoriController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
