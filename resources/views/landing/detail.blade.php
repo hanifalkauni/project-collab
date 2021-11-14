@@ -7,9 +7,10 @@
                 <div class="row">
                     <div class="col-lg-3">
 
+@php
+                              ($buku->cover != null ) ? $cover="asset/images/cover/".$buku->cover : $cover="asset/images/buku.jpg"
 
-                          {{($buku->cover != null ) ? $cover="asset/images/cover/".$buku->cover : $cover="asset/images/buku.jpg"}}
-
+@endphp
                         <div class="anime__details__pic set-bg" data-setbg="{{asset($cover)}}">
                             <div class="comment"><i class="fa fa-comments"></i> {{$sumVote}}</div>
                         </div>
@@ -39,7 +40,7 @@
                                         @if($detailBuku != null)
                                         <h6 style="color:white">Bio Penulis :</h6>
                                         <p style="word-wrap: break-word;">
-                                            {{$detailBuku->bio_penulis}}
+                                            {!!$detailBuku->bio_penulis!!}
                                         </p>
                                         @else
                                         <p>
