@@ -2,10 +2,17 @@
 @section('judul','Buku')
 @push('script')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{asset('asset')}}/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('asset')}}/js/plugins-init/datatables.init.js"></script>
+<script>
+    $(function () {
+      $("#table_buku").DataTable();
+    });
+  </script>
 @endpush
 @section('konten')
 <a href="/buku/create" class="btn btn-success">Tambah Buku</a><br>
-    <table class="table text-muted">
+    <table class="table text-muted" id="table_buku">
         <thead>
             <tr>
                 <th>No</th>
@@ -13,6 +20,7 @@
                 <th>Kategori</th>
                 <th>Tahun</th>
                 <th>Penulis</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +28,9 @@
             <tr>
                 <td>{{$key+1}}</td>
                 <td>{{$item->judul}}</td>
+                <td>{{$item->nama}}</td>
+                <td>{{$item->tahun}}</td>
+                <td>{{$item->penulis}}</td>
                 <td>
                     <div class="row">
                         <a href="/buku/{{$item->id}}/detail" class="btn btn-info mr-1">Detail</a>
@@ -31,9 +42,6 @@
                         </form>
                     </div>
                 </td>
-                <td>{{$item->tahun}}</td>
-                <td>{{$item->penulis}}</td>
-
             </tr>
             @empty
 

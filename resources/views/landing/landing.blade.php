@@ -18,11 +18,11 @@
                                 </div>
                             </div>
                         </div> --}}
-                       
+
                         <div class="row">
                             @forelse ($data as $item)
                             @php
-                            $item->cover != null ?  $cover = $item->cover :  $cover='asset/images/buku.jpg';
+                            $item->cover != null ?  $cover = 'asset/images/cover/'.$item->cover :  $cover='asset/images/buku.jpg';
                             $komentar=DB::table('rating_komentar')->where('buku_id',$item->id)->count();
                             $rating=number_format(DB::table('rating_komentar')->where('buku_id',$item->id)->avg('rating'),1);
                             @endphp
@@ -42,19 +42,19 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
                         @empty
-                  
+
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                    No Data
                                 </div>
                             </div>
-                   
+
                         @endforelse
                     </div>
                     </div>
-                   
+
                 </div>
                </div>
 </div>

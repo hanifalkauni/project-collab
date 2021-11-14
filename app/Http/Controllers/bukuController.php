@@ -21,7 +21,10 @@ class bukuController extends Controller
      */
     public function index()
     {
-        $buku = Buku::where('user_id',Auth::id())->get();
+        $buku = DB::table('buku')
+        ->join('kategori','buku.kategori_id','=','kategori.id')
+        ->select('buku.*','kategori.nama')
+        ->get();
         return view('buku.index', compact('buku'));
     }
 
@@ -48,9 +51,12 @@ class bukuController extends Controller
         'judul' => 'required',
         'kategori_id' => 'required',
         'tahun' => 'required',
-        'penulis' => 'required'
+        'penulis' => 'required',
+        'cover'     => 'required|image|mimes:png,jpg,jpeg,gif,svg|max:2048',
         ]);
 
+        $coverName = time().'.'.$request->cover->extension();
+        $request->cover->move(public_path('asset/images/cover/'), $coverName);
 
         $buku = new Buku;
         $buku->judul = $request->judul;
@@ -58,7 +64,7 @@ class bukuController extends Controller
         $buku->tahun = $request->tahun;
         $buku->penulis = $request->penulis;
         $buku->user_id = Auth::id();
-        $buku->cover = $request->cover;
+        $buku->cover = $coverName;
 
         $buku -> save();
         Alert::success('Berhasil', 'Buku berhasil ditambahkan');
@@ -99,23 +105,38 @@ class bukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $request -> validate([
         'judul' => 'required',
         'kategori_id' => 'required',
         'tahun' => 'required',
-        'penulis' => 'required'
+        'penulis' => 'required',
         ]);
 
-        $buku = Buku::find($id);
-        $buku -> judul = $request->judul;
-        $buku -> kategori_id = $request->kategori_id;
-        $buku -> tahun = $request->tahun;
-        $buku -> penulis = $request->penulis;
-        $buku->user_id = Auth::id();
-        Alert::success('Berhasil', 'Buku berhasil diupdate');
+        if(!empty($request->cover)){
+            $coverName = time().'.'.$request->cover->extension();
+            $request->cover->move(public_path('asset/images/cover/'), $coverName);
+
+            $buku = Buku::find($id);
+            $buku -> judul = $request->judul;
+            $buku -> kategori_id = $request->kategori_id;
+            $buku -> tahun = $request->tahun;
+            $buku -> penulis = $request->penulis;
+            $buku->user_id = Auth::id();
+            $buku->cover = $coverName;
+        }
+        else{
+            $buku = Buku::find($id);
+            $buku -> judul = $request->judul;
+            $buku -> kategori_id = $request->kategori_id;
+            $buku -> tahun = $request->tahun;
+            $buku -> penulis = $request->penulis;
+            $buku->user_id = Auth::id();
+        }
 
         $buku -> update();
+        Alert::success('Berhasil', 'Buku berhasil diupdate');
+
         return redirect("/buku");
     }
 
@@ -130,7 +151,7 @@ class bukuController extends Controller
         $detailbuku = DetailBuku::where('buku_id',$id);
         $detailbuku->delete();
         $buku = Buku::find($id);
-        $buku -> delete();
+        $buku->delete();
         Alert::success('Berhasil', 'Buku berhasil dihapus');
         return redirect('/buku');
     }

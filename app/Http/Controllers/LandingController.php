@@ -18,9 +18,9 @@ class LandingController extends Controller
 
     public function index(){
        $data=DB::table('buku')
-            ->join('kategori','buku.kategori_id','kategori.id')
+            ->join('kategori','buku.kategori_id','=','kategori.id')
+            ->select('buku.*','kategori.nama')
             ->get();
-     
         return view('landing.landing',compact('data'));
     }
 
@@ -28,6 +28,7 @@ class LandingController extends Controller
         $buku=DB::table('buku')
             ->join('kategori','buku.kategori_id','kategori.id')
             ->where('buku.id',$id)
+            ->select('buku.*','kategori.nama')
             ->first();
         $komentar=DB::table('rating_komentar')
             ->join('users','users.id','rating_komentar.user_id')
@@ -56,7 +57,7 @@ class LandingController extends Controller
 
     public function addKomentar(Request $request,$buku,$id){
         // dd($request);
-        if($request->rating=="" && $request->komentar ==""){
+        if($request->rating=="" || $request->komentar ==""){
             Alert::error('Gagal', 'Rating atau Komentar berhasil belum diisi');
         }
         else{

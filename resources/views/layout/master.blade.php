@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="{{asset('asset')}}/vendor/owl-carousel/css/owl.theme.default.min.css">
     <link href="{{asset('asset')}}/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
     <link href="{{asset('asset')}}/css/style.css" rel="stylesheet">
+    <link href="{{asset('asset')}}/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
 
-
-
+    <script src="https://cdn.tiny.cloud/1/qkmmbopkn6mt6on8zalskbmot6ghf7fnahrtos9yrifhjeoi/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body>
