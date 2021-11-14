@@ -31,7 +31,7 @@ class bukuController extends Controller
      */
     public function create()
     {
-        $kategori = DB::table('kategori')->get();
+        $kategori = Kategori::all();
         return view('buku.create', compact('kategori'));
     }
 
@@ -84,7 +84,8 @@ class bukuController extends Controller
     public function edit($id)
     {
          $buku = Buku::findOrFail($id);
-        return view('buku.edit', compact('buku'));
+         $kategori = Kategori::all();
+        return view('buku.edit', compact('buku', 'kategori'));
     }
 
     /**
@@ -110,6 +111,8 @@ class bukuController extends Controller
         $buku -> kategori_id = $request->kategori_id;
         $buku -> tahun = $request->tahun;
         $buku -> penulis = $request->penulis;
+        $buku->user_id = Auth::id();
+        Alert::success('Berhasil', 'Buku berhasil diupdate');
 
         $buku -> save();
         return ("buku");
