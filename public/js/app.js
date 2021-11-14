@@ -49931,8 +49931,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Data\project-collab-1\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Data\project-collab-1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\BootCamp\Pekan 2\PROJECT-collab\koleb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\BootCamp\Pekan 2\PROJECT-collab\koleb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

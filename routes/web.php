@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::get('/landing/detail', function () {
     return view('landing.detail');
 });
+//crud Buku
+Route::resource("buku", 'bukuController');
+
 Route::resource('kategori', 'KategoriController');
 
 Auth::routes();
