@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing.landing');
+});
+Route::get('/landing/detail', function () {
+    return view('landing.detail');
 });
 //crud Buku
 Route::resource("buku", 'bukuController');
