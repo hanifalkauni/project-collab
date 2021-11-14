@@ -22,9 +22,9 @@
                 <td>{{$item->judul}}</td>
                 <td>
                     <div class="row">
-                        <form action="/buku/{{$item->id}}" method="POST">
-                        <!--<a href="/kategori/{{$item->id}}" class="btn  btn-success mr-1">Detail</a>-->
+                        <a href="/buku/{{$item->id}}/detail" class="btn btn-info mr-1">Detail</a>
                         <a href="/buku/{{$item->id}}/edit" class="btn btn-warning mr-1">Edit</a>
+                        <form action="/buku/{{$item->id}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger mr-1" value="delete">Delete</button>

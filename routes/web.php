@@ -11,17 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('landing.landing');
-});
-Route::get('/landing/detail', function () {
-    return view('landing.detail');
-});
+Auth::routes();
+
+//CRUD LandingPage
+Route::get('/','LandingController@index')->name('frontpage');
+Route::get('/detail/{id}','LandingController@detail')->name('detail');
+Route::post('/detail/{buku}/addkomentar/{id}','LandingController@addKomentar')->name('addKomentar');
+Route::get('/detail/{buku}/deletekomentar/{id}','LandingController@deleteKomentar')->name('deleteKomentar');
+
 //crud Buku
 Route::resource("buku", 'bukuController');
 
+//CRUD Kategori
 Route::resource('kategori', 'KategoriController');
 
-Auth::routes();
+//CRUD Detail Buku
+Route::get('/buku/{id}/detail','DetailBukuController@index');
+Route::post('/buku/{id}/detail/createorupdate','DetailBukuController@createOrUpdate');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
+

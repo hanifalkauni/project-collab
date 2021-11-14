@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Buku;
 use App\Kategori;
+use App\DetailBuku;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class bukuController extends Controller
      */
     public function index()
     {
-        $buku = Buku::all();
+        $buku = Buku::where('user_id',Auth::id())->get();
         return view('buku.index', compact('buku'));
     }
 
@@ -57,6 +58,7 @@ class bukuController extends Controller
         $buku->tahun = $request->tahun;
         $buku->penulis = $request->penulis;
         $buku->user_id = Auth::id();
+        $buku->cover = $request->cover;
 
         $buku -> save();
         Alert::success('Berhasil', 'Buku berhasil ditambahkan');
@@ -125,8 +127,11 @@ class bukuController extends Controller
      */
     public function destroy($id)
     {
+        $detailbuku = DetailBuku::where('buku_id',$id);
+        $detailbuku->delete();
         $buku = Buku::find($id);
         $buku -> delete();
+        Alert::success('Berhasil', 'Buku berhasil dihapus');
         return redirect('/buku');
     }
 }

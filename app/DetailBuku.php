@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetailBuku extends Model
 {
     protected $table = "detail_buku";
-    protected $fillabe = [
+    protected $fillable = [
         'buku_id',
         'nama_asli_penulis',
         'bio_penulis',

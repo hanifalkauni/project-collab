@@ -13,6 +13,7 @@ class Buku extends Model
         'kategori_id',
         'user_id',
         'tahun',
+        'cover',
         'penulis',
         'sampul'
     ];

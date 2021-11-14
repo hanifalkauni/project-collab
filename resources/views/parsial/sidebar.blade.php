@@ -12,16 +12,19 @@
                             <li><a href="./index2.html">Dashboard 2</a></li>
                         </ul>
                     </li> --}}
-                    <li><a href="#" aria-expanded="false"><i
-                        class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                    <li><a href="/home" aria-expanded="false"><i
+                            class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
                     </li>
-                   
-                    <li><a href="/kategori" aria-expanded="false"><i class="icon icon-globe-2"></i><span
-                                class="nav-text">Kategori</span></a>
-                    </li>
+                   @if (Auth::id()==1)
+                   <li><a href="/kategori" aria-expanded="false"><i class="icon icon-globe-2"></i><span
+                    class="nav-text">Kategori</span></a>
+                   </li>  
+                   @else
+                       
+                   @endif
                     
                     <li><a href="/buku" aria-expanded="false"><i class="icon icon-book"></i><span
-                        class="nav-text">Buku</span></a>
+                            class="nav-text">Buku</span></a>
                     </li>
                 </ul>
             </div>
