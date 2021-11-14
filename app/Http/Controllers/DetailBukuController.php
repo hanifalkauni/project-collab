@@ -18,7 +18,7 @@ class DetailBukuController extends Controller
         $buku_id = $id;
         return view('detailBuku.index',compact('detail','buku_id'));
     }
-    
+
     public function createOrUpdate(Request $request, $id){
         $request->validate([
             'nama_asli_penulis'  => 'required',
@@ -28,7 +28,7 @@ class DetailBukuController extends Controller
         $input= DetailBuku::updateOrCreate([
         'buku_id'=>$id
         ],
-        [   
+        [
             'buku_id'=>$id,
             'nama_asli_penulis'=>$request->nama_asli_penulis,
             'bio_penulis'=>$request->bio_penulis,

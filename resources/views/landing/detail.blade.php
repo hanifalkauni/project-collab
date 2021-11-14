@@ -52,7 +52,7 @@
                             @if($detailBuku != null)
                             <h6 style="color:white">Sinopsis :</h6>
                             <p style="word-wrap: break-word;">
-                                {{$detailBuku->sinopsis}}
+                                {!! $detailBuku->sinopsis !!}
                             </p>
                             @else
                             <p>

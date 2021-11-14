@@ -1,8 +1,8 @@
-@extends('layout.master');
+@extends('layout.master')
 @section('judul', "Detail Buku $buku_id")
 @push('script')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/qkmmbopkn6mt6on8zalskbmot6ghf7fnahrtos9yrifhjeoi/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://cdn.tiny.cloud/1/qkmmbopkn6mt6on8zalskbmot6ghf7fnahrtos9yrifhjeoi/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
       tinymce.init({

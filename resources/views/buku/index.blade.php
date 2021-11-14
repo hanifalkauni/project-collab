@@ -1,4 +1,4 @@
-@extends('layout.master');
+@extends('layout.master')
 @section('judul','Buku')
 @push('script')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
