@@ -12,9 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing.landing');
 });
-
+Route::get('/landing/detail', function () {
+    return view('landing.detail');
+});
 Route::resource('kategori', 'KategoriController');
 
 Auth::routes();
